@@ -79,7 +79,7 @@ struct SessionData: Codable { var markers: [Marker] = []; var loops: [LoopPoint]
             if let path = bookmarkURL, let data = try? Data(contentsOf: path), let session = try? JSONDecoder().decode(SessionData.self, from: data) { markers = session.markers; loops = session.loops }
             else { markers = []; loops = [] }
             selectedLoop = nil; analyze(at: 0)
-        } catch { errorMessage = "Could not open file: \(error.localizedDescription)" }
+        } catch { errorMessage = "Could not open the file. Make sure it’s a supported audio file and try again." }
     }
     private static func makeWaveform(_ file: AVAudioFile) -> [Float] {
         let frames = AVAudioFrameCount(file.length); guard frames > 0, let buffer = AVAudioPCMBuffer(pcmFormat: file.processingFormat, frameCapacity: frames) else { return [] }
