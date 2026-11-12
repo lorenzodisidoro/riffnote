@@ -2,7 +2,11 @@
 
 A macOS app for studying music by ear with waveform playback, loops, markers, speed controls, EQ, and spectrum analysis.
 
-<a href="dist/Riffnote-Installer.pkg"><img src="https://img.shields.io/badge/Download-macOS%20Installer-blue?logo=apple" alt="Download the macOS installer"></a>
+<p align="center">
+  <a href="https://github.com/lorenzodisidoro/riffnote/raw/refs/heads/main/dist/Riffnote-Installer.pkg">
+    <img src="https://img.shields.io/badge/Download-macOS%20Installer-blue?logo=apple" alt="Download the macOS installer">
+  </a>
+</p>
 
 ## Features
 
