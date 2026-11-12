@@ -1,0 +1,11 @@
+# SwiftPM and Xcode build output
+.build/
+.swiftpm/
+
+# macOS and Xcode user files
+.DS_Store
+*.xcuserstate
+*.xcresult/
+
+# Debug symbols
+*.dSYM/
