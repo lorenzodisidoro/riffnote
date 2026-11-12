@@ -11,13 +11,13 @@ ARM_PRODUCT="$ROOT/.build/DerivedData/Build/Products/Release/$APP_NAME"
 INTEL_PRODUCT="$ROOT/.build/IntelDerivedData/Build/Products/Release/$APP_NAME"
 
 cd "$ROOT"
-if [[ ! -x "$ARM_PRODUCT" || Package.swift -nt "$ARM_PRODUCT" || Sources/Riffnote/RiffnoteApp.swift -nt "$ARM_PRODUCT" ]]; then
+if [[ ! -x "$ARM_PRODUCT" || Package.swift -nt "$ARM_PRODUCT" || sources/riffnote/RiffnoteApp.swift -nt "$ARM_PRODUCT" ]]; then
   xcodebuild -scheme "$APP_NAME" -configuration Release \
     -destination 'platform=macOS' \
     -derivedDataPath .build/DerivedData \
     DEBUG_INFORMATION_FORMAT=dwarf build
 fi
-if [[ ! -x "$INTEL_PRODUCT" || Package.swift -nt "$INTEL_PRODUCT" || Sources/Riffnote/RiffnoteApp.swift -nt "$INTEL_PRODUCT" ]]; then
+if [[ ! -x "$INTEL_PRODUCT" || Package.swift -nt "$INTEL_PRODUCT" || sources/riffnote/RiffnoteApp.swift -nt "$INTEL_PRODUCT" ]]; then
   xcodebuild -scheme "$APP_NAME" -configuration Release \
     -destination 'platform=macOS,arch=x86_64' \
     -derivedDataPath .build/IntelDerivedData \
