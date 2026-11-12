@@ -5,6 +5,7 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 APP_NAME="Riffnote"
 APP_BUNDLE="$ROOT/.build/installer/$APP_NAME.app"
 PKG_ROOT="$ROOT/.build/installer/pkgroot"
+ICON_FILE="$ROOT/Assets/AppIcon.icns"
 OUTPUT="$ROOT/dist/$APP_NAME-Installer.pkg"
 ARM_PRODUCT="$ROOT/.build/DerivedData/Build/Products/Release/$APP_NAME"
 INTEL_PRODUCT="$ROOT/.build/IntelDerivedData/Build/Products/Release/$APP_NAME"
@@ -24,8 +25,9 @@ if [[ ! -x "$INTEL_PRODUCT" || Package.swift -nt "$INTEL_PRODUCT" || Sources/Rif
 fi
 
 rm -rf "$APP_BUNDLE" "$PKG_ROOT"
-mkdir -p "$APP_BUNDLE/Contents/MacOS" "$PKG_ROOT" "$ROOT/dist"
+mkdir -p "$APP_BUNDLE/Contents/MacOS" "$APP_BUNDLE/Contents/Resources" "$PKG_ROOT" "$ROOT/dist"
 lipo -create "$ARM_PRODUCT" "$INTEL_PRODUCT" -output "$APP_BUNDLE/Contents/MacOS/$APP_NAME"
+cp "$ICON_FILE" "$APP_BUNDLE/Contents/Resources/AppIcon.icns"
 
 cat > "$APP_BUNDLE/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -36,6 +38,8 @@ cat > "$APP_BUNDLE/Contents/Info.plist" <<'PLIST'
 	<string>Riffnote</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.riffnote.app</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
 	<key>CFBundleName</key>
 	<string>Riffnote</string>
 	<key>CFBundlePackageType</key>
